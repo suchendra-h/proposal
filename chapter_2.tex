@@ -1,0 +1,107 @@
+\chapter{Machine Learning}
+\label{chap:ML}
+
+In this chapter we will start by reviewing definitions of ML in the literature, and continue with definitions of learning categories such as supervised, unsupervised and reinforcement learning. Next, we explore how data is managed in a given ML problem, as this is relevant to safety, certification and assurance (for example, data might form some of the evidence used in an assurance case). Finally, we review how performance of ML methods is measured.
+
+\section{Definition}
+Machine learning algorithms can extract patterns and learn from data \cite{IanGoodfellow2016}. A brief definition of learning can be given as \cite{mitchell1997machine}
+\begin{displayquote}[][]
+    "A computer program is said to learn from experience \textit{E} with respect to some class of tasks \textit{T} and performance measure \textit{P}, if its performance at tasks in \textit{T}, as measured by \textit{P}, improves with experience \textit{E}."
+\end{displayquote}
+
+A task is the main objective of using an ML algorithm. For example, in an autonomous vehicle, driving the car is the task. A task is not the process of learning. Learning is used as a means to achieve an ability to accomplish a task \cite{IanGoodfellow2016}. With developments in ML methods, they have been applied to different tasks, some examples of tasks are classification, regression, transcription, machine translation, denoising \cite{IanGoodfellow2016}.
+
+The performance measure is used to quantify how successfully a task is accomplished, equivalently, number of erroneous outputs could be used as a way of indicating a method's performance. 
+
+Based on the above-stated definition, the ML algorithm undergoes an experience in the process of learning. This experience is generally classified into \textbf{unsupervised}, \textbf{supervised} and \textbf{reinforcement} learning.
+
+\section{Learning types}
+
+Unsupervised learning finds the properties of the overall structure of the dataset. Clustering as an example of unsupervised learning, finds clusters within a dataset and assigns each data-point to one of them.\\In supervised learning, on the other hand, data-points that the learning algorithm experiences have a label. This label acts as a guide for the ML algorithm. The term supervised arises from the fact that the labels instruct the algorithm what to do. Labels are unavailable in unsupervised learning and the ML system is responsible to make sense of the data independently \cite{IanGoodfellow2016}. 
+
+Reinforcement learning (RL) algorithms experience an environment instead of a fixed dataset. The algorithm should learn how to maximize a reward function by taking an appropriate action \cite{sutton1992introduction}. The learner discovers this appropriate action by trying different actions and observing the value of the reward function. Actions not only affect the immediate reward, but can also change next actions' rewards. Trial and error search and delayed reward are two main characteristics of RL.\\The learner, also known as the agent in RL terms, should have the capability to sense the state of the environment, take actions that can alter the state and also have a goal to reach by taking actions. These three aspects are included in the reward function used by the agent \cite{sutton1992introduction}. 
+
+\section{Data in ML}
+
+Evidently, ML algorithms need data to learn and function. A dataset can be described as a \textbf{design matrix}. Every row in the matrix contains an example, also known as data-point, and each column is a feature. Iris dataset is one of the first ones used in statistics and ML \cite{Fischer1936Iris}. This dataset is comprised of 150 examples which have 4 features each. One example corresponds to one individual plant. Sepal length, sepal width, petal length and petal width are recorded as features of each plant \cite{Fischer1936Iris}.
+This means that if $X$ is the matrix, we can say $\mathbf{X} \in R^{150 \times 4}$
+
+The ML model will ultimately be deployed and used in a real world situation, hence, we are interested in how well an ML model performs on the data it has not seen before, this is also known as \textbf{generalization}. A portion of dataset is therefore not used in the training process and reserved as a \textbf{test set}. The data used in the training process is accordingly referred to as the \textbf{training set} \cite{IanGoodfellow2016}. 
+
+In some cases, the training and test datasets might be limited in size and to have a better generalization, it is necessary to use as much of the data for training as possible. In other words, there will be less data available to estimate the performance of the model. One solution for this situation is \textbf{cross-validation}. The entire dataset is split into ${S}$ subsets. In each run, ${S - 1}$ subsets are used for training and one remaining subset is the test set. For the next run, a different test set is selected \cite{bishop2006pattern}. Figure \ref{fig:crossv} shows selection of subset for ${S = 4}$.
+
+\begin{figure}
+    \includegraphics[width=0.5\linewidth ]{figures/crossv.png}
+    \centering
+    \caption{Cross validation for S=4 \cite{bishop2006pattern}.}
+    \label{fig:crossv}
+\end{figure}
+
+
+\section{Performance measures}
+In classification tasks, \textit{confusion matrix} is a way to demonstrate differences between predicted and true classes \cite{Bradley1997}. Table \ref{tab:conf-mat} shows the structure of a confusion matrix.
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[]
+    \centering
+    \begin{tabular}{llccll}
+                                &    & \multicolumn{2}{l}{Predicted Class} &    &  \\ \cline{3-4}
+                                &    & C-               & C+               &    &  \\ \hline
+    \multirow{2}{*}{True class} & C- & Tn               & Fp               & Cn &  \\
+                                & C+ & Fn               & Tp               & Cp &  \\
+                                &    & Rn               & Rp               & N  &  \\ \hline
+    \end{tabular}
+    \caption{A confusion matrix}
+    \label{tab:conf-mat}
+\end{table}
+
+In Table \ref{tab:conf-mat} \textit{Tp} and \textit{Tn} represent true positives and true negatives respectively. \textit{Fp} and \textit{Fn} are in the same manner the count of false positives and false negatives respectively. \textit{Cp} and \textit{Cn}, therefore, are the total number of positive and negative examples. Finally, \textit{Rp} and \textit{Rn} denote total number of predicted positives and negatives, respectively \cite{Bradley1997}.
+
+A variety of performance measures can be calculated from the confusion matrix, e.g., accuracy, precision, sensitivity and specificity \cite{Bradley1997}. Accuracy is often considered as a performance criteria which is simply the fraction of correctly classified samples to total samples, i.e., {\large $\frac{Tp + Tn}{N}$}. It is also possible to obtain the same information by calculating the \textit{error rate}.
+
+The Receiver Operating Characteristic (ROC) curve helps to find a pareto-optimal point between true and false positive rates as the decision threshold changes \cite{Bradley1997}. Each point on the curve represents the Tp (vertical axis) and Fp (horizontal axis) for a decision threshold. The area under ROC curve (AUC) is, therefore, a measure of the sensitivity of the model to changes in operating conditions. If AUC value is at maximum, i.e., one, it can be concluded that the $P(Fp) = 0$ and $P(Tp) = 1$ even when the operating conditions change.
+
+According to the mandates of the ML application, various performance metrics can be calculated from the confusion matrix, \cite{Sokolva2008} introduces twenty four of these metrics and in which applications they can be used.
+% \subsection{Loss function}
+% In some cases, the impact of misclassification is not the same for each class. For example, if a patient without cancer is classified as a cancer patient, there will be mental distress. However, if a cancer patient is diagnosed as healthy, the results could be premature death. A loss function is defined to penalize the second type of mis-classifications even if it is with the cost of having more errors in the other class \cite{bishop2006pattern}.\\
+% \textcolor{red}{incomplete - add where else loss functions are used}
+% \textcolor{green}{include it in the NN section}
+% \subsection{No free lunch theorem}
+\section{Neural networks}
+In this section we briefly review the structure of neural networks and their building blocks. As the name suggests, neural networks are fundamentally a collection of entities called \textit{neurons}, which can hold small units of data. Here we consider a simple neural network, depicted in Figure \ref{fig:nn}, consisting of a hidden layer and an output layer. Hidden layers are the ones not directly accessible from the outside world, i.e., not the input or output layers.
+\begin{figure}
+    \includegraphics[width=0.5\linewidth ]{figures/neural_net.png}
+    \centering
+    \caption{Structure of a two layer neural network. \cite{bishop2006pattern}.}
+    \label{fig:nn}
+\end{figure}
+
+Using the notation in \cite{bishop2006pattern}, if we have $D$ input variables, $x_{i}$, we can calculate linear combinations $a_{j}$ such that
+\[
+    a_{j}=\sum_{i=1}^{D}w^{(1)}_{ji}x_{i} + w^{(1)}_{j0}
+\]
+Here, $1 \leq j \leq M$ where $M$ represents number of neurons (nodes) in the hidden layer. The superscript $(1)$ corresponds to the first layer of the network, i.e., the hidden layer in this example. $w^{(1)}_{ji}$ are called weights and $w^{(1)}_{j0}$ are biases for the hidden layer.
+The $a_{j}$ values are referred to as \textit{activations}. Next, we use activation function, $h$, to calculate $z_{j}$, such that
+\[
+    z_{j}=h(a_{j})
+\]
+The activation function is required to be differentiable due to the differentiation in the learning process. $z_{j}$ values are then used to compute the linear combinations $a_{k}$ in a similar manner to the previous layer, i.e., 
+\[
+a_{k}=\sum_{j=1}^{M}w^{(2)}_{kj}z_{j} + w^{(2)}_{k0}
+\]
+$a_{k}$ is the output layer activation, therefore, similar to the hidden layer, an activation function, $\sigma$, will be used to reach final output values of the network, $y_{k}$.
+\[
+y_{k}=\sigma(a_{k})
+\]
+Substituting values from all layers the final $y_k$ will be
+
+\[
+y_{k}(x,w)=\sigma\bigg(\sum_{j=0}^{M}w^{(2)}_{kj}h \bigg( \sum_{i=0}^{D}w_{ji}^{(1)}x_i \bigg)\bigg)
+\]
+% \textcolor{red}{Should I include the training process for neural networks? It takes more space. At least 1-1.5 pages.}
+
+
+\section{Trends in ML research}
+With the rapid development of frameworks and libraries in ML, it is increasingly straightforward to apply ML algorithms and tools in different applications. It is possible to develop smaller models which in turn makes applications such as IoT \cite{iot_apps_conf} more feasible. 
+Prevalence of ML raises important questions in its fairness \cite{FairML2018}, privacy \cite{Federated2019}, and safety \cite{Varshney2017}. The term \textit{responsible ML} covers the social impacts of using ML in everyday life.
+Moreover, the desire to have faster, better performing ML systems has lead to areas such as quantum ML \cite{QuantumML2017}. As a matter of fact, quantum ML has been one of the initial motivations for experiments which lead to the famous quantum supremacy \cite{Quantum_sup}.
