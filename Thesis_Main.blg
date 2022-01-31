@@ -15,7 +15,7 @@ Reallocating 'name_of_file' (item size: 1) to 15 items.
 A level-1 auxiliary file: conclusion.aux
 Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
-Reallocating 'name_of_file' (item size: 1) to 8 items.
+Reallocating 'name_of_file' (item size: 1) to 12 items.
 Database file #1: library.bib
 Warning--to sort, need author or key in iso15026-1-2019
 Warning--to sort, need author or key in zoo21
@@ -46,7 +46,7 @@ Warning--empty year in Teramoto
 Warning--empty journal in Wang2019
 You've used 56 entries,
             2118 wiz_defined-function locations,
-            841 strings with 13571 characters,
+            841 strings with 13575 characters,
 and the built_in function-call counts, 17250 in all, are:
 = -- 1669
 > -- 849

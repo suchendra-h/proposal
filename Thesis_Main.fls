@@ -1,6 +1,6 @@
-PWD c:\Users\Suchendra\OneDrive - McMaster University\PhD Thesis\Comp\Thesis_Template
+PWD c:\Users\Suchendra\OneDrive - McMaster University\PhD Thesis\Proposal\Report\Latex Files
 INPUT C:\Users\Suchendra\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\Suchendra\OneDrive - McMaster University\PhD Thesis\Comp\Thesis_Template\Thesis_Main.tex
+INPUT c:\Users\Suchendra\OneDrive - McMaster University\PhD Thesis\Proposal\Report\Latex Files\Thesis_Main.tex
 OUTPUT Thesis_Main.log
 INPUT C:\Users\Suchendra\AppData\Local\Programs\MiKTeX\tex\latex\base\report.cls
 INPUT C:\Users\Suchendra\AppData\Local\Programs\MiKTeX\tex\latex\base\report.cls
