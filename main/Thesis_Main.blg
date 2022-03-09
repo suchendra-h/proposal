@@ -5,44 +5,48 @@ Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
 Reallocating 'name_of_file' (item size: 1) to 12 items.
 Database file #1: library.bib
-You've used 1 entry,
+Warning--can't use both volume and number fields in Cubranic2005
+Warning--empty institution in eixelberger98
+Warning--empty institution in leh80
+You've used 5 entries,
             2118 wiz_defined-function locations,
-            502 strings with 4168 characters,
-and the built_in function-call counts, 216 in all, are:
-= -- 21
-> -- 7
-< -- 0
-+ -- 3
-- -- 2
-* -- 9
-:= -- 49
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 5
+            527 strings with 4775 characters,
+and the built_in function-call counts, 1665 in all, are:
+= -- 165
+> -- 67
+< -- 4
++ -- 27
+- -- 22
+* -- 104
+:= -- 275
+add.period$ -- 15
+call.type$ -- 5
+change.case$ -- 29
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 8
-empty$ -- 16
-format.name$ -- 2
-if$ -- 40
+cite$ -- 8
+duplicate$ -- 70
+empty$ -- 128
+format.name$ -- 22
+if$ -- 352
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 0
-newline$ -- 8
-num.names$ -- 2
-pop$ -- 3
+int.to.str$ -- 5
+missing$ -- 2
+newline$ -- 28
+num.names$ -- 10
+pop$ -- 28
 preamble$ -- 1
-purify$ -- 3
+purify$ -- 21
 quote$ -- 0
-skip$ -- 5
+skip$ -- 57
 stack$ -- 0
-substring$ -- 5
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 89
+swap$ -- 25
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 4
-warning$ -- 0
-while$ -- 2
-width$ -- 2
-write$ -- 13
+type$ -- 20
+warning$ -- 3
+while$ -- 16
+width$ -- 6
+write$ -- 57
+(There were 3 warnings)

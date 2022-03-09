@@ -1,3 +1,4 @@
 \contentsline {chapter}{Abstract}{i}{chapter*.1}%
 \contentsline {chapter}{Abbreviations}{v}{chapter*.5}%
-\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {1}Introduction}{ix}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Benefits of Architecture Recovery}{ix}{section.1.1}%
